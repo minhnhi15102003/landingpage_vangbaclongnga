@@ -12,8 +12,8 @@ function FontPicker({ label, value, onChange }: { label: string; value?: string;
   const [query, setQuery] = useState("");
   const matches = useMemo(() => fontOptions.filter((font) => searchKey(font.label).includes(searchKey(query))), [query]);
   const selected = findFont(value);
-  return <div className="ad-font-picker">
-    <div className="ad-field"><label className="ad-field-label" htmlFor={id}>{label}</label>
+  return <div className="ln-admin-font-picker">
+    <div className="ln-admin-field"><label className="ln-admin-field-label" htmlFor={id}>{label}</label>
       <input type="search" aria-label={`Tìm ${label.toLowerCase()}`} placeholder="Tìm font: SVN, UTM, iCiel…" value={query} onChange={(event) => setQuery(event.target.value)} />
       <select id={id} value={value ?? ""} onChange={(event) => onChange(event.target.value || undefined)}>
         <option value="">Mặc định theo thiết kế</option>
@@ -21,7 +21,7 @@ function FontPicker({ label, value, onChange }: { label: string; value?: string;
         {matches.map((font) => <option key={font.id} value={font.id}>{font.label}{font.localOnly ? " · trên máy này" : ""}</option>)}
       </select>
     </div>
-    <p className="ad-caption">{matches.length} font phù hợp.{selected?.localOnly ? " Font này dùng bản cài trên máy; máy khác sẽ dùng font dự phòng nếu chưa cài." : ""}</p>
+    <p className="ln-admin-caption">{matches.length} font phù hợp.{selected?.localOnly ? " Font này dùng bản cài trên máy; máy khác sẽ dùng font dự phòng nếu chưa cài." : ""}</p>
   </div>;
 }
 
@@ -62,42 +62,42 @@ export default function TypographyEditor({ content, onChange, adminAppearance, o
   }
   return <>
     <style>{fontFaceCSS([value?.headingFont, value?.bodyFont, current.font])}</style>
-    <section className="ad-panel">
-      <div className="ad-panel-heading"><div><h2>Font chữ của website</h2><p>Đã thêm {installedFontCount} họ font hỗ trợ tiếng Việt từ máy. Font chỉ tải khi được sử dụng.</p></div></div>
-      <div className="ad-form-grid">
+    <section className="ln-admin-panel">
+      <div className="ln-admin-panel-heading"><div><h2>Font chữ của website</h2><p>Đã thêm {installedFontCount} họ font hỗ trợ tiếng Việt từ máy. Font chỉ tải khi được sử dụng.</p></div></div>
+      <div className="ln-admin-form-grid">
         <FontPicker label="Font tiêu đề mặc định" value={value?.headingFont} onChange={(headingFont) => onChange({ ...value, headingFont })} />
         <FontPicker label="Font nội dung mặc định" value={value?.bodyFont} onChange={(bodyFont) => onChange({ ...value, bodyFont })} />
       </div>
-      <p className="ad-caption">Áp dụng cho toàn website. Các phần đã chọn font riêng sẽ ưu tiên font riêng.</p>
+      <p className="ln-admin-caption">Áp dụng cho toàn website. Các phần đã chọn font riêng sẽ ưu tiên font riêng.</p>
     </section>
-    <section className="ad-panel">
-      <div className="ad-panel-heading"><div><h2>Chỉnh từng phần chữ</h2><p>Chọn khu vực, chỉnh font và cỡ chữ rồi xem trước. Bấm “Lưu thay đổi” để áp dụng lên website.</p></div></div>
-      <label className="ad-field"><span>Phần chữ cần chỉnh</span><select value={key} onChange={(event) => setKey(event.target.value as TextTarget)}>
+    <section className="ln-admin-panel">
+      <div className="ln-admin-panel-heading"><div><h2>Chỉnh từng phần chữ</h2><p>Chọn khu vực, chỉnh font và cỡ chữ rồi xem trước. Bấm “Lưu thay đổi” để áp dụng lên website.</p></div></div>
+      <label className="ln-admin-field"><span>Phần chữ cần chỉnh</span><select value={key} onChange={(event) => setKey(event.target.value as TextTarget)}>
         {groups.map((group) => <optgroup key={group} label={group}>{textTargetKeys.filter((key) => textTargets[key].label.startsWith(`${group} · `)).map((key) => <option key={key} value={key}>{textTargets[key].label}</option>)}</optgroup>)}
       </select></label>
-      <div className="ad-type-grid">
+      <div className="ln-admin-type-grid">
         <div>
           <FontPicker key={key} label="Font riêng cho phần chữ này" value={current.font} onChange={(font) => update({ font })} />
-          <div className="ad-form-grid">
-            <label className="ad-field"><span>Cỡ chữ máy tính (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo thiết kế" value={current.size ?? ""} onChange={(event) => update({ size: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
-            <label className="ad-field"><span>Cỡ chữ điện thoại (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo thiết kế" value={current.mobileSize ?? ""} onChange={(event) => update({ mobileSize: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
+          <div className="ln-admin-form-grid">
+            <label className="ln-admin-field"><span>Cỡ chữ máy tính (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo thiết kế" value={current.size ?? ""} onChange={(event) => update({ size: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
+            <label className="ln-admin-field"><span>Cỡ chữ điện thoại (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo thiết kế" value={current.mobileSize ?? ""} onChange={(event) => update({ mobileSize: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
           </div>
-          <label className="ad-field"><span>Độ đậm</span><select value={current.weight ?? ""} onChange={(event) => update({ weight: event.target.value ? Number(event.target.value) : undefined })}><option value="">Theo thiết kế</option>{[100,200,300,400,500,600,700,800,900].map((weight) => <option key={weight} value={weight}>{weight}{weight === 400 ? " · Thường" : weight === 700 ? " · Đậm" : ""}</option>)}</select></label>
-          <p className="ad-caption">Cỡ chữ từ 8–800 px. Để trống để giữ cỡ chữ tự thích ứng của thiết kế. Xem trước dùng cỡ chữ tham khảo khi chưa có giá trị riêng.</p>
-          <button type="button" className="ad-secondary ad-type-reset" onClick={() => update({ font: undefined, size: undefined, mobileSize: undefined, weight: undefined })}>Đặt lại phần chữ này</button>
+          <label className="ln-admin-field"><span>Độ đậm</span><select value={current.weight ?? ""} onChange={(event) => update({ weight: event.target.value ? Number(event.target.value) : undefined })}><option value="">Theo thiết kế</option>{[100,200,300,400,500,600,700,800,900].map((weight) => <option key={weight} value={weight}>{weight}{weight === 400 ? " · Thường" : weight === 700 ? " · Đậm" : ""}</option>)}</select></label>
+          <p className="ln-admin-caption">Cỡ chữ từ 8–800 px. Để trống để giữ cỡ chữ tự thích ứng của thiết kế. Xem trước dùng cỡ chữ tham khảo khi chưa có giá trị riêng.</p>
+          <button type="button" className="ln-admin-secondary ln-admin-type-reset" onClick={() => update({ font: undefined, size: undefined, mobileSize: undefined, weight: undefined })}>Đặt lại phần chữ này</button>
         </div>
-        <div className="ad-type-previews">
-          {(["Máy tính", "Điện thoại"] as const).map((label, index) => <div className="ad-type-preview" key={label}><p className="ad-caption">{label} · {(index ? current.mobileSize : current.size) ?? (index ? target.mobile : target.desktop)} px</p><div className="ad-type-sample" style={{ fontFamily: family, fontSize: `${(index ? current.mobileSize : current.size) ?? (index ? target.mobile : target.desktop)}px`, fontWeight: current.weight ?? 400 }}>{sampleText(content, key)}</div></div>)}
-          <div className="ad-type-diacritics" style={{ fontFamily: family }}>Tiếng Việt: Ă Â Đ Ê Ô Ơ Ư · Ắ ằ ẫ ễ ộ ớ ừ ỹ · Vàng Bạc Long Nga</div>
+        <div className="ln-admin-type-previews">
+          {(["Máy tính", "Điện thoại"] as const).map((label, index) => <div className="ln-admin-type-preview" key={label}><p className="ln-admin-caption">{label} · {(index ? current.mobileSize : current.size) ?? (index ? target.mobile : target.desktop)} px</p><div className="ln-admin-type-sample" style={{ fontFamily: family, fontSize: `${(index ? current.mobileSize : current.size) ?? (index ? target.mobile : target.desktop)}px`, fontWeight: current.weight ?? 400 }}>{sampleText(content, key)}</div></div>)}
+          <div className="ln-admin-type-diacritics" style={{ fontFamily: family }}>Tiếng Việt: Ă Â Đ Ê Ô Ơ Ư · Ắ ằ ẫ ễ ộ ớ ừ ỹ · Vàng Bạc Long Nga</div>
         </div>
       </div>
-      <div className="ad-panel-actions"><span className="ad-caption">Chưa chọn font/cỡ chữ mới thì website giữ thiết kế hiện tại.</span><button type="button" className="ad-secondary" onClick={() => onChange(undefined)}>Khôi phục toàn bộ kiểu chữ website</button></div>
+      <div className="ln-admin-panel-actions"><span className="ln-admin-caption">Chưa chọn font/cỡ chữ mới thì website giữ thiết kế hiện tại.</span><button type="button" className="ln-admin-secondary" onClick={() => onChange(undefined)}>Khôi phục toàn bộ kiểu chữ website</button></div>
     </section>
-    <section className="ad-panel">
-      <div className="ad-panel-heading"><div><h2>Chữ trong trang quản lý</h2><p>Áp dụng ngay và ghi nhớ trên trình duyệt này.</p></div></div>
-      <div className="ad-form-grid">
+    <section className="ln-admin-panel">
+      <div className="ln-admin-panel-heading"><div><h2>Chữ trong trang quản lý</h2><p>Áp dụng ngay và ghi nhớ trên trình duyệt này.</p></div></div>
+      <div className="ln-admin-form-grid">
         <FontPicker label="Font giao diện quản lý" value={adminAppearance.font} onChange={(font) => onAdminChange({ ...adminAppearance, font })} />
-        <div><label className="ad-range"><span>Cỡ chữ cơ bản · {adminAppearance.size}px</span><input type="range" min="14" max="22" step="1" value={adminAppearance.size} onChange={(event) => onAdminChange({ ...adminAppearance, size: Number(event.target.value) })} /></label><button type="button" className="ad-secondary" onClick={() => onAdminChange({ size: 16 })}>Đặt lại giao diện quản lý</button></div>
+        <div><label className="ln-admin-range"><span>Cỡ chữ cơ bản · {adminAppearance.size}px</span><input type="range" min="14" max="22" step="1" value={adminAppearance.size} onChange={(event) => onAdminChange({ ...adminAppearance, size: Number(event.target.value) })} /></label><button type="button" className="ln-admin-secondary" onClick={() => onAdminChange({ size: 16 })}>Đặt lại giao diện quản lý</button></div>
       </div>
     </section>
   </>;
