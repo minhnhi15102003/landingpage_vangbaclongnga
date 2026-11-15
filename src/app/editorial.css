@@ -340,7 +340,7 @@ a:hover > .ln-photo img { transform: scale(calc(var(--photo-zoom, 1) * 1.035)); 
   .ln-showcase { width: 100%; border-inline: 0; margin-top: 0; --inset: 22px; }
   .ln-showcase h2 { font-size: 40px; }
   .ln-kicker { font-size: 10px; }
-  .ln-section-heading { align-items: flex-start; gap: 18px; padding-block: 20px; margin-bottom: 26px; }
+  .ln-section-heading { align-items: flex-end; gap: 18px; padding-block: 20px; margin-bottom: 26px; }
   .ln-section-heading > p { max-width: 120px; font-size: 10px; line-height: 1.7; padding-top: 5px; }
   .ln-section-heading > p br { display: none; }
   .editorial-header .header-inner { min-height: 76px; }
