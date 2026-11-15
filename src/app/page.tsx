@@ -168,7 +168,6 @@ export default async function Home() {
               <span>© {new Date().getFullYear()} {site.name}</span>
               <address className="ln-footer-inline-contact" id="thong-tin-cua-hang">
                 <a href={storeInfo.maps} target="_blank" rel="noopener noreferrer">{storeInfo.address}</a>
-                <span aria-hidden="true">·</span>
                 <a href={storeInfo.phoneHref} aria-label={`Gọi cửa hàng: ${storeInfo.phone}`}>{storeInfo.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3")}</a>
               </address>
               <a href="#dau-trang">VỀ ĐẦU TRANG <Arrow diagonal /></a>

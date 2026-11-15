@@ -227,10 +227,11 @@ a:hover > .ln-photo img { transform: scale(calc(var(--photo-zoom, 1) * 1.035)); 
 .ln-footer-wordmark { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 35px; color: var(--paper); font: 500 clamp(74px, 17.7cqw, 280px)/1.1 var(--display); letter-spacing: -.055em; white-space: nowrap; }
 .ln-footer-wordmark > span { color: #d6af75; font: 400 .45em/1 var(--serif); }
 .ln-footer-bottom { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 25px; padding-block: 26px; border-top: 1px dashed #f3e7d045; color: #c7a98b; font-size: 13px; line-height: 1.7; }
-.ln-footer-inline-contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 5px 12px; min-width: 0; font-size: 14px; font-style: normal; text-align: center; }
+.ln-footer-inline-contact { display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 8px 16px; min-width: 0; font-size: 14px; font-style: normal; text-align: left; }
 .ln-footer-inline-contact > a { color: #dfc5a5; text-underline-offset: 4px; }
 .ln-footer-inline-contact > a:hover { color: var(--paper); text-decoration: underline; }
-.ln-footer-inline-contact > a:last-child { white-space: nowrap; }
+.ln-footer-inline-contact > a:first-child { min-width: 0; }
+.ln-footer-inline-contact > a:last-child { flex-shrink: 0; white-space: nowrap; }
 .ln-footer-bottom > a { display: inline-flex; align-items: center; gap: 12px; color: var(--paper); font: 400 15px var(--display); white-space: nowrap; }
 
 /* Center the cover and footer while their backgrounds fill the side margins. */
@@ -335,8 +336,7 @@ a:hover > .ln-photo img { transform: scale(calc(var(--photo-zoom, 1) * 1.035)); 
   .ln-footer-brand > p, .ln-footer-column a, .ln-footer-column p { font-size: 15px; }
   .ln-footer-wordmark { gap: 12px; padding-bottom: 25px; font-size: 17.2vw; }
   .ln-footer-bottom { grid-template-columns: 1fr auto; gap: 18px 12px; padding-block: 20px; }
-  .ln-footer-inline-contact { grid-column: 1 / -1; grid-row: 1; flex-direction: column; gap: 5px; line-height: 1.8; }
-  .ln-footer-inline-contact > span { display: none; }
+  .ln-footer-inline-contact { grid-column: 1 / -1; grid-row: 1; gap: 12px; font-size: clamp(11px, 3.2vw, 14px); line-height: 1.8; }
   .ln-footer-bottom > a { margin-left: auto; font-size: 14px; gap: 8px; }
   .ln-showcase { width: 100%; border-inline: 0; margin-top: 0; --inset: 22px; }
   .ln-showcase h2 { font-size: 40px; }
