@@ -91,6 +91,7 @@ export default function SiteHeader({ brand }: { brand?: BrandProps }) {
       </div>
       <dialog ref={drawer} className="site-menu-drawer" id="mobile-navigation" aria-labelledby="site-menu-title"
         onCancel={(event) => { event.preventDefault(); setOpen(false); }} onClose={onClosed}
+        onKeyDown={(event) => { if (event.key === "Escape") { event.preventDefault(); setOpen(false); } }}
         onPointerDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
         <div className="site-menu-panel">
           <div className="site-menu-heading"><h2 id="site-menu-title" className="site-menu-title">MENU</h2><button className="site-menu-close" type="button" aria-label="Đóng menu" onClick={() => setOpen(false)}><span aria-hidden="true">×</span></button></div>
