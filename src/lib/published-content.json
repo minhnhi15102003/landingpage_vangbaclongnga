@@ -1,0 +1,386 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-15T04:30:44.387Z",
+  "site": {
+    "name": "Vàng Bạc Long Nga",
+    "shortName": "LONG NGA",
+    "tagline": "VÀNG BẠC · TRANG SỨC",
+    "logo": "/images/uploads/66071d71-4d8a-46bb-8d91-bbb3ea68d63e.webp",
+    "logoScale": 165,
+    "footerLogo": "/images/uploads/b8649753-f723-43b3-a7bd-cc0cbdeadfef.webp",
+    "footerLogoScale": 220,
+    "footerLogoAlign": "left",
+    "footerLogoMarginTop": 11,
+    "address": "Bái Thượng, Xã Lam Sơn, Thanh Hóa",
+    "phone": "0763130401",
+    "email": "doanhnghiepvangbaclongnga@gmail.com",
+    "facebook": "https://www.facebook.com/profile.php?id=100089569013190",
+    "zalo": "https://zalo.me/0763130401",
+    "maps": "https://www.google.com/maps/place/DNTN+V%C3%A0ng+B%E1%BA%A1c+Long+Nga/@19.9006759,105.3811958,18z/data=!4m14!1m7!3m6!1s0x3136c342a98e0bbd:0x629ce127db3f5fe5!2zRE5UTiBWw6BuZyBC4bqhYyBMb25nIE5nYQ!8m2!3d19.9007188!4d105.3823877!16s%2Fg%2F11pwv8hvww!3m5!1s0x3136c342a98e0bbd:0x629ce127db3f5fe5!8m2!3d19.9007188!4d105.3823877!16s%2Fg%2F11pwv8hvww",
+    "latitude": 19.9007188,
+    "longitude": 105.3823877,
+    "seoTitle": "Vàng Bạc Long Nga",
+    "seoDescription": "Khám phá các thiết kế vàng bạc tinh tế và tham khảo bảng giá cập nhật từ Vàng Bạc Long Nga."
+  },
+  "announcement": {
+    "enabled": false,
+    "text": ""
+  },
+  "typography": {
+    "styles": {
+      "miniRingDescription": {
+        "font": "local-15e15dc0e85a",
+        "weight": 600
+      },
+      "miniBangleDescription": {
+        "font": "local-15e15dc0e85a",
+        "weight": 600
+      },
+      "priceColumns": {
+        "font": "local-15e15dc0e85a",
+        "size": 20,
+        "mobileSize": 18,
+        "weight": 600
+      },
+      "questionTitle": {
+        "font": "local-15e15dc0e85a",
+        "size": 18,
+        "mobileSize": 16,
+        "weight": 600
+      },
+      "questionText": {
+        "font": "local-15e15dc0e85a",
+        "size": 15,
+        "weight": 600
+      },
+      "priceProduct": {
+        "size": 27
+      },
+      "priceDetail": {
+        "size": 18,
+        "weight": 600
+      },
+      "priceValue": {
+        "size": 20,
+        "mobileSize": 18
+      },
+      "priceNote": {
+        "size": 15,
+        "mobileSize": 14
+      },
+      "priceKicker": {
+        "size": 16,
+        "mobileSize": 15
+      },
+      "collectionKicker": {
+        "size": 16,
+        "mobileSize": 15
+      },
+      "spotlightKicker": {
+        "size": 16,
+        "mobileSize": 15
+      },
+      "craftKicker": {
+        "size": 16,
+        "mobileSize": 15
+      },
+      "introKicker": {
+        "size": 16,
+        "mobileSize": 15
+      },
+      "productCategory": {
+        "size": 16,
+        "mobileSize": 15
+      },
+      "productName": {
+        "size": 29,
+        "mobileSize": 27
+      },
+      "craftButton": {
+        "size": 14,
+        "mobileSize": 12
+      },
+      "spotlightButton": {
+        "size": 14,
+        "mobileSize": 11
+      },
+      "spotlightTitle": {
+        "size": 60,
+        "mobileSize": 30
+      },
+      "spotlightDescription": {
+        "size": 18,
+        "mobileSize": 14
+      },
+      "spotlightCaption": {
+        "size": 16,
+        "weight": 600
+      },
+      "spotlightHeading": {
+        "size": 98,
+        "mobileSize": 48
+      },
+      "collectionName": {
+        "size": 25,
+        "mobileSize": 21
+      },
+      "collectionDescription": {
+        "weight": 600
+      },
+      "priceTitle": {
+        "size": 70
+      }
+    }
+  },
+  "copy": {
+    "heroTitle": "MỚI",
+    "heroVertical": "BỘ SƯU TẬP",
+    "heroButton": "KHÁM PHÁ NGAY",
+    "heroSignature": "NÉT RIÊNG",
+    "heroDescription": "",
+    "introKicker": "LONG NGA / FINE JEWELLERY",
+    "introTitle": "Gìn giữ\nkhoảnh khắc.\nTrao gửi\nyêu thương.",
+    "introNote": "",
+    "miniRingTitle": "DẤU ẤN VÀNG SON",
+    "miniRingDescription": "Những đường nét tinh tế,\ncho điều ý nghĩa ở lại.",
+    "miniBangleTitle": "NÉT DUYÊN THANH LỊCH",
+    "miniBangleDescription": "Điểm nhấn vừa vặn,\nđồng hành cùng mỗi ngày.",
+    "signatureTitle": "Điểm nhấn\ncủa riêng bạn.",
+    "signatureDescription": "",
+    "craftKicker": "VẺ ĐẸP TỪ SỰ CHĂM CHÚT",
+    "craftTitle": "Từ đôi tay\nđến nét\ntinh tế.",
+    "craftDescription": "Một món trang sức đẹp bắt đầu từ sự tận tâm trong từng chi tiết. Long Nga trân trọng những giá trị được gìn giữ qua từng thiết kế.",
+    "craftButton": "CÂU CHUYỆN LONG NGA",
+    "spotlightKicker": "TUYỂN CHỌN ĐẶC BIỆT",
+    "spotlightTitle": "Ít cầu kỳ hơn.\nNhiều dấu ấn hơn.",
+    "spotlightDescription": "Khám phá những thiết kế\nđồng hành cùng bạn mỗi ngày.",
+    "spotlightButton": "XEM BỘ SƯU TẬP",
+    "spotlightHeading": "Tỏa sáng\nmỗi ngày.",
+    "spotlightCaption": "Một lựa chọn tinh tế.\nMột nét đẹp bền lâu.",
+    "collectionKicker": "CHO TỪNG KHOẢNH KHẮC",
+    "collectionTitle": "Bộ sưu tập tuyển chọn.",
+    "priceKicker": "THÔNG TIN TỪ CỬA HÀNG",
+    "priceTitle": "Bảng giá \ntại Long Nga.",
+    "priceDescription": "Tham khảo bảng giá\nVui lòng xác nhận giá tại thời điểm giao dịch.",
+    "priceNote": "Giá và đơn vị tính được xác nhận theo từng loại sản phẩm tại cửa hàng.",
+    "consultationKicker": "LONG NGA ĐỒNG HÀNH CÙNG BẠN",
+    "consultationTitle": "Chọn điều\nthật vừa vặn.",
+    "consultationButton": "THÔNG TIN CỬA HÀNG",
+    "promisesKicker": "ĐIỀU CHÚNG TÔI GÌN GIỮ",
+    "promisesTitle": "Lời hứa từ Long Nga.",
+    "footerDescription": ""
+  },
+  "images": {
+    "hero": {
+      "src": "/images/campaign/fan-gold-hero-selected-v3.webp",
+      "alt": "Dây chuyền vàng hình quạt trên cổ và vai nghiêng cùng lụa đỏ burgundy",
+      "x": 100,
+      "y": 50
+    },
+    "introInset": {
+      "src": "/images/campaign/fan-gold-bracelet-v2.webp",
+      "alt": "Lắc tay vàng họa tiết quạt xòe trên cổ tay đặt trên lụa đỏ",
+      "x": 50,
+      "y": 49
+    },
+    "introPortrait": {
+      "src": "/images/campaign/fan-gold-set-v2.webp",
+      "alt": "Bộ dây chuyền và lắc tay vàng hình quạt xòe phối cùng lụa đỏ burgundy",
+      "x": 50,
+      "y": 50,
+      "zoom": 1
+    },
+    "miniRing": {
+      "src": "/images/intro-ring-render.webp",
+      "alt": "Nhẫn vàng đính đá trắng",
+      "x": 50,
+      "y": 50
+    },
+    "miniBangle": {
+      "src": "/images/intro-bangle-render.webp",
+      "alt": "Vòng tay vàng chạm hoa văn",
+      "x": 50,
+      "y": 50
+    },
+    "craft": {
+      "src": "/images/editorial-craft.webp",
+      "alt": "Đôi tay người thợ chăm chút chiếc nhẫn vàng",
+      "x": 42,
+      "y": 50
+    },
+    "spotlightMain": {
+      "src": "/images/campaign/fan-gold-necklace-wide-pose-v4.webp",
+      "alt": "Dây chuyền vàng hình quạt trên vai người mẫu góc ba phần tư cùng lụa đỏ burgundy",
+      "x": 85,
+      "y": 50
+    },
+    "spotlightDetail": {
+      "src": "/images/campaign/fan-gold-bracelet-v2.webp",
+      "alt": "Lắc tay vàng họa tiết quạt xòe trên cổ tay đặt trên lụa đỏ",
+      "x": 50,
+      "y": 50
+    },
+    "consultation": {
+      "src": "/images/campaign/fan-gold-set-selected-hq-v7.webp",
+      "alt": "Ảnh cận bộ dây chuyền và lắc tay vàng hình quạt, dáng tay thanh thoát trên lụa đỏ burgundy",
+      "x": 50,
+      "y": 50
+    }
+  },
+  "products": [
+    {
+      "id": "product-necklace",
+      "category": "DÂY CHUYỀN",
+      "name": "ÁNH VÀNG DỊU DÀNG",
+      "description": "Một nét chạm thanh lịch, làm nổi bật vẻ đẹp tự nhiên và phong cách riêng.",
+      "photo": {
+        "src": "/images/campaign/fan-gold-necklace-pose-v4.webp",
+        "alt": "Dây chuyền vàng hình quạt xòe trên cổ và vai nghiêng nhẹ cùng lụa đỏ burgundy",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      }
+    },
+    {
+      "id": "product-earring",
+      "category": "BÔNG TAI",
+      "name": "NGỌC NGÀ TINH KHÔI",
+      "description": "Vẻ đẹp tinh giản trong từng chi tiết, dành cho những khoảnh khắc đáng nhớ.",
+      "photo": {
+        "src": "/images/campaign/fan-gold-earrings-v2.webp",
+        "alt": "Bông tai vàng dáng quạt rủ với những nan vàng đan thoáng",
+        "x": 50,
+        "y": 50
+      }
+    }
+  ],
+  "collections": [
+    {
+      "id": "collection-earring",
+      "name": "CHO NGÀY TRỌNG ĐẠI",
+      "description": "Lưu giữ một lời hẹn ước",
+      "photo": {
+        "src": "/images/campaign/fan-gold-earrings-v2.webp",
+        "alt": "Bông tai vàng dáng quạt rủ với những nan vàng đan thoáng",
+        "x": 50,
+        "y": 50
+      },
+      "visible": true
+    },
+    {
+      "id": "collection-bracelet",
+      "name": "DẤU ẤN CỦA BẠN",
+      "description": "Một điểm nhấn thật vừa vặn",
+      "photo": {
+        "src": "/images/campaign/fan-gold-bracelet-v2.webp",
+        "alt": "Lắc tay vàng họa tiết quạt xòe trên cổ tay đặt trên lụa đỏ",
+        "x": 50,
+        "y": 50,
+        "zoom": 1
+      },
+      "visible": true
+    },
+    {
+      "id": "collection-ring",
+      "name": "MÓN QUÀ TRÂN QUÝ",
+      "description": "Gửi trao điều ý nghĩa",
+      "photo": {
+        "src": "/images/campaign/fan-gold-ring-pose-v2.webp",
+        "alt": "Nhẫn vàng mặt quạt xòe đeo trên bàn tay buông nhẹ qua nếp lụa đỏ burgundy",
+        "x": 48,
+        "y": 50
+      },
+      "visible": true
+    },
+    {
+      "id": "collection-necklace",
+      "name": "VẺ ĐẸP MỖI NGÀY",
+      "description": "Thanh lịch theo cách riêng",
+      "photo": {
+        "src": "/images/campaign/fan-gold-necklace-pose-v4.webp",
+        "alt": "Dây chuyền vàng hình quạt xòe trên cổ và vai nghiêng nhẹ cùng lụa đỏ burgundy",
+        "x": 50,
+        "y": 50
+      },
+      "visible": true
+    }
+  ],
+  "prices": {
+    "unit": "VNĐ / chỉ",
+    "groups": [
+      {
+        "id": "group-main",
+        "name": "Bảng giá vàng bạc",
+        "description": "",
+        "items": [
+          {
+            "id": "price-9999",
+            "name": "Nhẫn Tròn 99.9",
+            "detail": "Vàng 24K",
+            "buy": null,
+            "sell": null,
+            "tone": "gold"
+          },
+          {
+            "id": "price-750",
+            "name": "Vàng Trang Sức 24K",
+            "detail": "Vàng 24K",
+            "buy": null,
+            "sell": null,
+            "tone": "warm"
+          },
+          {
+            "id": "price-610",
+            "name": "Vàng Trang Sức 10K",
+            "detail": "Vàng 10K",
+            "buy": null,
+            "sell": null,
+            "tone": "soft"
+          },
+          {
+            "id": "price-silver",
+            "name": "Bạc",
+            "detail": "Bạc 999",
+            "buy": null,
+            "sell": null,
+            "tone": "silver"
+          }
+        ]
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "question-style",
+      "title": "Chọn trang sức theo phong cách của bạn",
+      "text": "Một thiết kế tinh giản cho mỗi ngày, hay một điểm nhấn cho dịp đặc biệt? Long Nga cùng bạn tìm món trang sức phù hợp với sở thích và khoảnh khắc của mình."
+    },
+    {
+      "id": "question-price",
+      "title": "Tham khảo giá trước khi ghé cửa hàng",
+      "text": "Bạn có thể xem bảng giá trên trang và liên hệ cửa hàng để xác nhận giá, chất liệu cùng thông tin cụ thể của từng sản phẩm."
+    },
+    {
+      "id": "question-gift",
+      "title": "Một món quà mang nhiều ý nghĩa",
+      "text": "Hãy chia sẻ người bạn muốn tặng và dịp đặc biệt của họ. Chúng tôi sẽ đồng hành cùng bạn trong việc lựa chọn."
+    }
+  ],
+  "promises": [
+    {
+      "kind": "quality",
+      "title": "THÔNG TIN RÕ RÀNG",
+      "description": "An tâm trong từng lựa chọn."
+    },
+    {
+      "kind": "care",
+      "title": "TƯ VẤN TẬN TÂM",
+      "description": "Lắng nghe điều bạn mong muốn."
+    },
+    {
+      "kind": "lasting",
+      "title": "ĐỒNG HÀNH DÀI LÂU",
+      "description": "Trân trọng từng dấu ấn của bạn."
+    }
+  ]
+}
