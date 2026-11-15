@@ -87,6 +87,17 @@
 .ln-admin-group > summary > span:last-child { margin-left: auto; color: #947854; }
 .ln-admin-group-number { font-size: calc(13px * var(--ln-admin-font-scale, 1)); color: #a88a61; }
 .ln-admin-group-body { padding: 22px; }
+.ln-admin-group > .ln-admin-collection-summary { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; }
+.ln-admin-group > .ln-admin-collection-summary small { margin-left: 0; }
+.ln-admin-collection-summary > button { white-space: nowrap; }
+.ln-admin-collection-photo { margin-top: 24px; scroll-margin-top: 110px; }
+@media (max-width: 600px) {
+  .ln-admin-group > .ln-admin-collection-summary { grid-template-columns: minmax(0, 1fr) auto; }
+  .ln-admin-collection-summary > strong { grid-column: 1; grid-row: 1; }
+  .ln-admin-collection-summary > small { grid-column: 1; grid-row: 2; }
+  .ln-admin-collection-summary > button { grid-column: 2; grid-row: 2; }
+  .ln-admin-collection-summary > span:last-child { grid-column: 2; grid-row: 1; }
+}
 .ln-admin-table-scroll { overflow-x: auto; }
 .ln-admin-price-table { width: 100%; min-width: 660px; border-collapse: collapse; }
 .ln-admin-price-table th { text-align: left; font-size: calc(13px * var(--ln-admin-font-scale, 1)); padding: 10px 8px; background: #f7f1e8; color: #8b735b; font-weight: 500; }

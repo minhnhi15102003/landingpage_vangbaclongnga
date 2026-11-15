@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type CSSProperties, type MouseEvent, type ReactNode } from "react";
 import { contentSchema, copyLabels, imageKeys, imageLabels, type SiteContent } from "@/lib/content-schema";
 import PhotoField, { uploadImage } from "./photo-field";
 import LogoSizeControl from "./logo-size-control";
@@ -25,6 +25,17 @@ function Panel({ title, description, action, children }: { title: string; descri
   return <section className="ln-admin-panel"><div className="ln-admin-panel-heading"><div><h2>{title}</h2>{description && <p>{description}</p>}</div>{action}</div>{children}</section>;
 }
 function move<T>(items: T[], index: number, delta: number) { const to = index + delta; if (to >= 0 && to < items.length) [items[index], items[to]] = [items[to], items[index]]; }
+
+function focusCollectionPhoto(event: MouseEvent<HTMLButtonElement>) {
+  event.preventDefault();
+  event.stopPropagation();
+  const group = event.currentTarget.closest("details");
+  if (!group) return;
+  group.open = true;
+  const region = group.querySelector<HTMLElement>(".ln-admin-collection-photo");
+  region?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  region?.querySelector<HTMLInputElement>('input[type="range"]')?.focus({ preventScroll: true });
+}
 
 export default function AdminEditor({ initial, initialRevision, username, mode }: { initial: SiteContent; initialRevision: string | null; username: string; mode: "local" | "github" }) {
   const [value, setValue] = useState(initial), [revision, setRevision] = useState(initialRevision), [saved, setSaved] = useState(JSON.stringify(initial));
@@ -110,8 +121,17 @@ export default function AdminEditor({ initial, initialRevision, username, mode }
       </>}
       {tab === "products" && <>
         <Panel title="Sản phẩm nổi bật" description="Hai sản phẩm trong phần “Điểm nhấn của riêng bạn”.">{value.products.map((product, pi) => <details className="ln-admin-group" key={product.id} open={pi === 0}><summary><strong>0{pi + 1} / {product.name}</strong><span aria-hidden="true">⌄</span></summary><div className="ln-admin-group-body"><div className="ln-admin-form-grid"><Field label="Loại sản phẩm" value={product.category} maxLength={160} onChange={(category) => edit((c) => { c.products[pi].category = category; })} /><Field label="Tên sản phẩm" value={product.name} maxLength={160} onChange={(name) => edit((c) => { c.products[pi].name = name; })} /></div><Field label="Mô tả sản phẩm" multiline value={product.description} onChange={(description) => edit((c) => { c.products[pi].description = description; })} /><PhotoField value={product.photo} options={photoOptions} onBusy={onBusy} onChange={(photo) => edit((c) => { c.products[pi].photo = photo; })} /></div></details>)}</Panel>
-        <Panel title="Bộ sưu tập" description="Sửa ảnh, tên, lời giới thiệu; thêm, ẩn và sắp xếp các bộ sản phẩm." action={<button type="button" className="ln-admin-secondary" disabled={value.collections.length >= 16} onClick={() => edit((c) => { c.collections.push({ id: crypto.randomUUID(), name: "Bộ sưu tập mới", description: "", visible: true, photo: { ...c.products[0].photo } }); })}>+ Thêm bộ sản phẩm</button>}>
-          {value.collections.map((item, ci) => <details className="ln-admin-group" key={item.id}><summary><strong>{String(ci + 1).padStart(2, "0")} / {item.name}</strong><small>{item.visible ? "Đang hiện" : "Đã ẩn"}</small><span aria-hidden="true">⌄</span></summary><div className="ln-admin-group-body"><Field label="Tên bộ sản phẩm" value={item.name} maxLength={160} onChange={(name) => edit((c) => { c.collections[ci].name = name; })} /><Field label="Thông tin bộ sản phẩm" value={item.description} multiline onChange={(description) => edit((c) => { c.collections[ci].description = description; })} /><label className="ln-admin-checkbox"><input type="checkbox" checked={item.visible} onChange={(e) => edit((c) => { c.collections[ci].visible = e.target.checked; })} />Hiển thị trên website</label><PhotoField value={item.photo} options={photoOptions} onBusy={onBusy} onChange={(photo) => edit((c) => { c.collections[ci].photo = photo; })} /><div className="ln-admin-panel-actions"><div className="ln-admin-row-actions"><button type="button" disabled={ci === 0} onClick={() => edit((c) => move(c.collections, ci, -1))}>↑ Đưa lên</button><button type="button" disabled={ci === value.collections.length - 1} onClick={() => edit((c) => move(c.collections, ci, 1))}>↓ Đưa xuống</button></div><button type="button" className="ln-admin-danger" onClick={() => { if (window.confirm(`Xóa bộ “${item.name}”?`)) edit((c) => { c.collections.splice(ci, 1); }); }}>Xóa bộ sản phẩm</button></div></div></details>)}
+        <Panel title="Bộ sưu tập" description="Bấm “Chỉnh vị trí ảnh” để căn ngang, căn dọc và phóng ảnh trong khung 3:4. Bấm “Lưu thay đổi” để áp dụng lên website." action={<button type="button" className="ln-admin-secondary" disabled={value.collections.length >= 16} onClick={() => edit((c) => { c.collections.push({ id: crypto.randomUUID(), name: "Bộ sưu tập mới", description: "", visible: true, photo: { ...c.products[0].photo } }); })}>+ Thêm bộ sản phẩm</button>}>
+          {value.collections.map((item, ci) => <details className="ln-admin-group" key={item.id}>
+            <summary className="ln-admin-collection-summary"><strong>{String(ci + 1).padStart(2, "0")} / {item.name}</strong><small>{item.visible ? "Đang hiện" : "Đã ẩn"}</small><button type="button" className="ln-admin-secondary" aria-label={`Chỉnh vị trí ảnh: ${item.name}`} aria-controls={`collection-photo-${item.id}`} onClick={focusCollectionPhoto}>Chỉnh vị trí ảnh</button><span aria-hidden="true">⌄</span></summary>
+            <div className="ln-admin-group-body">
+              <Field label="Tên bộ sản phẩm" value={item.name} maxLength={160} onChange={(name) => edit((c) => { c.collections[ci].name = name; })} />
+              <Field label="Thông tin bộ sản phẩm" value={item.description} multiline onChange={(description) => edit((c) => { c.collections[ci].description = description; })} />
+              <label className="ln-admin-checkbox"><input type="checkbox" checked={item.visible} onChange={(e) => edit((c) => { c.collections[ci].visible = e.target.checked; })} />Hiển thị trên website</label>
+              <div className="ln-admin-collection-photo" id={`collection-photo-${item.id}`}><h3>Ảnh và vị trí hiển thị</h3><PhotoField previewRatio="3 / 4" value={item.photo} options={photoOptions} onBusy={onBusy} onChange={(photo) => edit((c) => { c.collections[ci].photo = photo; })} /></div>
+              <div className="ln-admin-panel-actions"><div className="ln-admin-row-actions"><button type="button" disabled={ci === 0} onClick={() => edit((c) => move(c.collections, ci, -1))}>↑ Đưa lên</button><button type="button" disabled={ci === value.collections.length - 1} onClick={() => edit((c) => move(c.collections, ci, 1))}>↓ Đưa xuống</button></div><button type="button" className="ln-admin-danger" onClick={() => { if (window.confirm(`Xóa bộ “${item.name}”?`)) edit((c) => { c.collections.splice(ci, 1); }); }}>Xóa bộ sản phẩm</button></div>
+            </div>
+          </details>)}
         </Panel>
       </>}
       {tab === "images" && <Panel title="Hình ảnh trên website" description="Mỗi khu vực có ảnh riêng. Dùng thanh căn chỉnh để chọn phần ảnh muốn giữ trong khung.">
