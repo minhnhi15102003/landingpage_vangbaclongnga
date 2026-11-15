@@ -78,10 +78,10 @@ a:hover > .ln-photo img { transform: scale(calc(var(--photo-zoom, 1) * 1.035)); 
 .editorial-header .menu-toggle[aria-expanded="true"] .menu-lines i:first-child { transform: translateY(3px) rotate(45deg); }
 .editorial-header .menu-toggle[aria-expanded="true"] .menu-lines i:last-child { transform: translateY(-3px) rotate(-45deg); }
 .editorial-header .site-menu-drawer { position: fixed; inset: 0; width: 100%; height: 100%; height: 100dvh; max-width: none; max-height: none; padding: 0; margin: 0; border: 0; overflow: hidden; background: transparent; color: var(--paper); }
-.site-menu-drawer::backdrop { background: #16030199; animation: menu-shade-in .32s ease both; }
-.site-menu-drawer[data-state="closed"]::backdrop { animation: menu-shade-out .24s ease both; }
-.site-menu-panel { position: absolute; inset: 0 0 0 auto; display: flex; flex-direction: column; width: min(420px, calc(100% - 24px)); height: 100%; padding: max(28px, env(safe-area-inset-top)) clamp(24px, 4vw, 44px) max(28px, env(safe-area-inset-bottom)); border-left: 1px solid #caa76855; overflow-y: auto; overscroll-behavior: contain; background: #42100c; box-shadow: -20px 0 60px #16030166; animation: menu-panel-in .32s cubic-bezier(.2, .8, .2, 1) both; }
-.site-menu-drawer[data-state="closed"] .site-menu-panel { animation: menu-panel-out .24s ease-in both; }
+.site-menu-drawer::backdrop { background: #16030180; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); animation: menu-shade-in .44s ease both; }
+.site-menu-drawer[data-state="closed"]::backdrop { animation: menu-shade-out .28s ease both; }
+.site-menu-panel { position: absolute; inset: 0 0 0 auto; display: flex; flex-direction: column; width: min(420px, calc(100% - 48px)); height: 100%; padding: max(28px, env(safe-area-inset-top)) clamp(24px, 4vw, 44px) max(28px, env(safe-area-inset-bottom)); border-left: 1px solid #caa76855; overflow-y: auto; overscroll-behavior: contain; background: #42100c; box-shadow: -20px 0 60px #16030166; animation: menu-panel-in .44s cubic-bezier(.22, 1, .36, 1) both; }
+.site-menu-drawer[data-state="closed"] .site-menu-panel { animation: menu-panel-out .28s cubic-bezier(.4, 0, 1, 1) both; }
 .site-menu-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid #f3e7d033; }
 .editorial-header .site-menu-title { margin: 0; color: var(--paper); font: 400 28px/1.2 var(--display); letter-spacing: .03em; }
 .site-menu-close { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; padding: 0; border: 1px solid #f3e7d080; background: transparent; color: var(--paper); cursor: pointer; font: 300 32px/1 Arial, sans-serif; }

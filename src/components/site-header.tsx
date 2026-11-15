@@ -35,7 +35,7 @@ export default function SiteHeader({ brand }: { brand?: BrandProps }) {
       return;
     }
     if (!dialog.open) return;
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 240;
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280;
     const timer = window.setTimeout(() => { dialog.close(); restoreScrolling(scrollLock); }, delay);
     return () => window.clearTimeout(timer);
   }, [open]);
