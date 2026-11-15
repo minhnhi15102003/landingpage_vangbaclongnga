@@ -1,5 +1,5 @@
 import { fontFaceCSS, fontFamily } from "./font-library";
-import { typographySchema, type Typography } from "./typography-schema";
+import { SMALL_MOBILE_MAX_WIDTH, typographySchema, type Typography } from "./typography-schema";
 import { textTargetKeys, textTargets } from "./typography-targets";
 
 export function typographyCSS(value?: Typography) {
@@ -24,6 +24,7 @@ export function typographyCSS(value?: Typography) {
     if (declarations.length) rules.push(`${selector}{${declarations.join(";")};}`);
     if (style.size !== undefined) rules.push(`@media(min-width:601px){${selector}{font-size:${style.size}px!important;}}`);
     if (style.mobileSize !== undefined) rules.push(`@media(max-width:600px){${selector}{font-size:${style.mobileSize}px!important;}}`);
+    if (style.smallMobileSize !== undefined) rules.push(`@media(max-width:${SMALL_MOBILE_MAX_WIDTH}px){${selector}{font-size:${style.smallMobileSize}px!important;}}`);
   }
   return rules.join("\n");
 }

@@ -3,7 +3,7 @@ import { useId, useMemo, useState } from "react";
 import type { SiteContent } from "@/lib/content-schema";
 import { findFont, fontFaceCSS, fontFamily, fontOptions, installedFontCount } from "@/lib/font-library";
 import { textTargetKeys, textTargets, type TextTarget } from "@/lib/typography-targets";
-import type { TextStyle, Typography } from "@/lib/typography-schema";
+import { SMALL_MOBILE_MAX_WIDTH, type TextStyle, type Typography } from "@/lib/typography-schema";
 
 export type AdminAppearance = { font?: string; size: number };
 function searchKey(value: string) { return value.normalize("NFD").toLowerCase().replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d"); }
@@ -51,6 +51,11 @@ export default function TypographyEditor({ content, onChange, adminAppearance, o
   const target = textTargets[key];
   const inherited = target.role === "heading" ? value?.headingFont ?? "oswald" : value?.bodyFont ?? "be-vietnam-pro";
   const family = fontFamily(current.font ?? inherited);
+  const previews = [
+    { label: "Máy tính", size: current.size ?? target.desktop },
+    { label: `Điện thoại lớn · ${SMALL_MOBILE_MAX_WIDTH + 1}–600 px`, size: current.mobileSize ?? target.mobile },
+    { label: `Điện thoại nhỏ · ≤${SMALL_MOBILE_MAX_WIDTH} px`, size: current.smallMobileSize ?? current.mobileSize ?? target.mobile },
+  ];
   const groups = [...new Set(textTargetKeys.map((key) => textTargets[key].label.split(" · ")[0]))];
   function update(patch: Partial<TextStyle>) {
     const next = { ...current, ...patch };
@@ -80,14 +85,16 @@ export default function TypographyEditor({ content, onChange, adminAppearance, o
           <FontPicker key={key} label="Font riêng cho phần chữ này" value={current.font} onChange={(font) => update({ font })} />
           <div className="ln-admin-form-grid">
             <label className="ln-admin-field"><span>Cỡ chữ máy tính (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo thiết kế" value={current.size ?? ""} onChange={(event) => update({ size: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
-            <label className="ln-admin-field"><span>Cỡ chữ điện thoại (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo thiết kế" value={current.mobileSize ?? ""} onChange={(event) => update({ mobileSize: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
+            <label className="ln-admin-field"><span>Cỡ chữ điện thoại lớn (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo thiết kế" value={current.mobileSize ?? ""} onChange={(event) => update({ mobileSize: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
+            <label className="ln-admin-field"><span>Cỡ chữ điện thoại nhỏ (px)</span><input type="number" min="8" max="800" step="1" placeholder="Theo cỡ điện thoại lớn" value={current.smallMobileSize ?? ""} onChange={(event) => update({ smallMobileSize: event.target.value === "" ? undefined : Number(event.target.value) })} /></label>
           </div>
+          <p className="ln-admin-caption">Điện thoại nhỏ: màn hình rộng tối đa {SMALL_MOBILE_MAX_WIDTH} px. Điện thoại lớn: {SMALL_MOBILE_MAX_WIDTH + 1}–600 px. Để trống cỡ nhỏ để dùng cỡ điện thoại hiện tại.</p>
           <label className="ln-admin-field"><span>Độ đậm</span><select value={current.weight ?? ""} onChange={(event) => update({ weight: event.target.value ? Number(event.target.value) : undefined })}><option value="">Theo thiết kế</option>{[100,200,300,400,500,600,700,800,900].map((weight) => <option key={weight} value={weight}>{weight}{weight === 400 ? " · Thường" : weight === 700 ? " · Đậm" : ""}</option>)}</select></label>
           <p className="ln-admin-caption">Cỡ chữ từ 8–800 px. Để trống để giữ cỡ chữ tự thích ứng của thiết kế. Xem trước dùng cỡ chữ tham khảo khi chưa có giá trị riêng.</p>
-          <button type="button" className="ln-admin-secondary ln-admin-type-reset" onClick={() => update({ font: undefined, size: undefined, mobileSize: undefined, weight: undefined })}>Đặt lại phần chữ này</button>
+          <button type="button" className="ln-admin-secondary ln-admin-type-reset" onClick={() => update({ font: undefined, size: undefined, mobileSize: undefined, smallMobileSize: undefined, weight: undefined })}>Đặt lại phần chữ này</button>
         </div>
         <div className="ln-admin-type-previews">
-          {(["Máy tính", "Điện thoại"] as const).map((label, index) => <div className="ln-admin-type-preview" key={label}><p className="ln-admin-caption">{label} · {(index ? current.mobileSize : current.size) ?? (index ? target.mobile : target.desktop)} px</p><div className="ln-admin-type-sample" style={{ fontFamily: family, fontSize: `${(index ? current.mobileSize : current.size) ?? (index ? target.mobile : target.desktop)}px`, fontWeight: current.weight ?? 400 }}>{sampleText(content, key)}</div></div>)}
+          {previews.map(({ label, size }) => <div className="ln-admin-type-preview" key={label}><p className="ln-admin-caption">{label} · Cỡ chữ {size} px</p><div className="ln-admin-type-sample" style={{ fontFamily: family, fontSize: `${size}px`, fontWeight: current.weight ?? 400 }}>{sampleText(content, key)}</div></div>)}
           <div className="ln-admin-type-diacritics" style={{ fontFamily: family }}>Tiếng Việt: Ă Â Đ Ê Ô Ơ Ư · Ắ ằ ẫ ễ ộ ớ ừ ỹ · Vàng Bạc Long Nga</div>
         </div>
       </div>

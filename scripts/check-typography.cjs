@@ -26,13 +26,33 @@ test('font, desktop/mobile sizes and weight survive saved content round trips', 
   assert.match(css, /@media\(min-width:601px\).*font-size:42px!important/);
   assert.match(css, /@media\(max-width:600px\).*font-size:28px!important/);
   assert.match(css, /font-weight:900!important/);
+  assert.doesNotMatch(css, /@media\(max-width:414px\)/);
   assert.doesNotMatch(typographyCSS({ styles: { priceGroup: { font: 'oswald' } } }), /font-size/);
 });
+test('small-phone size is saved separately and overrides only the narrower breakpoint', () => {
+  const typography = { styles: { priceGroup: { size: 42, mobileSize: 35, smallMobileSize: 28 } } };
+  const saved = contentSchema.parse(JSON.parse(JSON.stringify({ ...defaultContent, typography })));
+  assert.deepEqual(saved.typography, typography);
+  const css = typographyCSS(saved.typography);
+  assert.match(css, /@media\(min-width:601px\).*font-size:42px!important/);
+  assert.match(css, /@media\(max-width:600px\).*font-size:35px!important/);
+  assert.match(css, /@media\(max-width:414px\).*font-size:28px!important/);
+  assert.ok(css.indexOf('@media(max-width:414px)') > css.indexOf('@media(max-width:600px)'));
+});
+
+test('a small-phone-only override leaves desktop and larger phones on their design defaults', () => {
+  const css = typographyCSS({ styles: { priceGroup: { smallMobileSize: 26 } } });
+  assert.match(css, /@media\(max-width:414px\).*font-size:26px!important/);
+  assert.doesNotMatch(css, /@media\(max-width:600px\)|@media\(min-width:601px\)/);
+});
+
 test('rejects unknown targets/fonts and out-of-range or injected CSS values', () => {
   for (const value of [
     { headingFont: 'not-a-font' }, { styles: { untrusted: {} } },
     { styles: { priceGroup: { size: 7 } } }, { styles: { priceGroup: { size: 801 } } },
     { styles: { priceGroup: { mobileSize: -1 } } }, { styles: { priceGroup: { weight: 950 } } },
+    { styles: { priceGroup: { smallMobileSize: 7 } } }, { styles: { priceGroup: { smallMobileSize: 801 } } },
+    { styles: { priceGroup: { smallMobileSize: 12.5 } } }, { styles: { priceGroup: { smallMobileSize: '26px;color:red' } } },
     { styles: { priceGroup: { font: '</style><script>alert(1)</script>' } } },
     { styles: { priceGroup: { size: '35px;color:red' } } },
   ]) {
