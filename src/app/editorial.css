@@ -350,7 +350,7 @@ a:hover > .ln-photo img { transform: scale(calc(var(--photo-zoom, 1) * 1.035)); 
   .editorial-header .menu-toggle { min-height: 42px; }
   .editorial-header .menu-label { font-size: 12px; }
   .ln-hero { height: min(780px, 100svh); min-height: 650px; }
-  .ln-hero-title { top: 120px; gap: 12px; }
+  .ln-hero-title { display: none; }
   .ln-hero-word { font-size: 39vw; line-height: 1.03; }
   .ln-hero-vertical { font-size: 27px; margin-top: .5em; }
   .ln-hero-shade { background: linear-gradient(180deg, #250704a6, #25070411 58%, #250704d1); }
