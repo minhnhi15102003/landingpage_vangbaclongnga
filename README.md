@@ -23,5 +23,5 @@ Repository có bản nội dung công khai và ảnh logo hiện tại để kh�
 - Các ảnh minh họa tạm đã được tối ưu WebP. Nguồn tạo và bộ prompt được ghi trong [public/images/README.md](public/images/README.md).
 - Trang quản trị tại đường dẫn riêng ở trên quản lý nhóm giá, giá mua/bán, sản phẩm, bộ sưu tập, ảnh, thông báo, nội dung, liên hệ và SEO.
 - Đăng nhập riêng bằng bcrypt, phiên HttpOnly và kiểm tra quyền tại server. Tạo/đổi tài khoản bằng `npm.cmd run admin:setup`.
-- Mặc định lưu local ngoài public; có adapter kho GitHub riêng tư để lưu nội dung lâu dài khi triển khai serverless. Vercel không được dùng chế độ ghi tệp local.
+- Mặc định lưu local ngoài public; có adapter kho GitHub riêng tư để lưu nội dung lâu dài khi triển khai serverless. Vercel mới deploy dùng bản nội dung đã đóng gói; muốn đăng nhập và sửa nội dung online cần cấu hình kho GitHub riêng tư.
 - Xem [hướng dẫn quản trị, bảo mật và triển khai](docs/ADMIN.md) và [.env.example](.env.example).

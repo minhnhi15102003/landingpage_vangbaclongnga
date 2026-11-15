@@ -81,6 +81,8 @@ Không dùng cách ghi tệp local cho Vercel: đĩa triển khai không phải 
 
 ## Cấu hình kho GitHub cho Vercel
 
+Khi mới deploy và chưa cấu hình kho nội dung (hoặc vẫn đặt `CONTENT_STORAGE=local`), trang công khai dùng bản nội dung và logo đã đóng gói trong repository. Trang quản trị hiển thị hướng dẫn cấu hình; đăng nhập, lưu chỉnh sửa và upload ảnh chỉ hoạt động sau khi có kho bền vững. Ứng dụng không dùng ổ tạm của Vercel để lưu phiên hay dữ liệu quản trị. Khi đã chọn `CONTENT_STORAGE=github`, lỗi cấu hình/kết nối kho vẫn được báo để tránh hiển thị nhầm nội dung cũ.
+
 Đây là adapter đã chuẩn bị sẵn; chưa tự tạo kho hoặc kết nối tài khoản GitHub. Cần chủ cửa hàng chọn và cung cấp cấu hình trước khi sử dụng trên mạng.
 
 1. Tạo **kho riêng tư riêng cho nội dung**, ví dụ `longnga-content`, thêm README để có nhánh `main`. Không dùng kho mã nguồn đang liên kết deploy: các lần lưu sẽ tạo commit, không nên kích hoạt build lại toàn bộ website.

@@ -8,6 +8,10 @@ export class StorageUnavailable extends Error {}
 export type Document<T> = { value: T; revision: string | null };
 const root = path.join(process.cwd(), ".data");
 
+export function usesPublishedContent() {
+  return Boolean(process.env.VERCEL) && (process.env.CONTENT_STORAGE ?? "local") === "local";
+}
+
 export function storageMode(): "local" | "github" {
   const mode = process.env.CONTENT_STORAGE ?? "local";
   if (mode !== "local" && mode !== "github") throw new StorageUnavailable("CONTENT_STORAGE không hợp lệ.");
@@ -101,6 +105,9 @@ async function writeBytes(key: string, bytes: Buffer, expectedRevision: string |
 }
 
 export async function readDocument<T>(key: "content.json" | "security.json", fallback: () => T): Promise<Document<T>> {
+  // A fresh Vercel deployment can serve the public snapshot bundled with the
+  // application. Session state and all writes still require durable storage.
+  if (key === "content.json" && usesPublishedContent()) return { value: fallback(), revision: null };
   const entry = await readBytes(key);
   return entry ? { value: JSON.parse(entry.bytes.toString("utf8")) as T, revision: entry.revision } : { value: fallback(), revision: null };
 }
