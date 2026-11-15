@@ -5,6 +5,7 @@ import { photoVariables } from "@/lib/photo-layout";
 import { typographyCSS } from "@/lib/typography";
 import { logoVariables, footerLogoSettings, footerLogoVariables } from "@/lib/logo-layout";
 import SiteHeader from "@/components/site-header";
+import DecorativeStar from "@/components/decorative-star";
 import { getPublicContent } from "@/lib/content";
 import { campaignImages } from "@/lib/image-library";
 import type { SiteContent } from "@/lib/content-schema";
@@ -69,7 +70,7 @@ export default async function Home() {
           <h1 className="ln-hero-title" id="hero-title"><span className="ln-hero-word">{copy.heroTitle}</span><span className="ln-hero-vertical">{copy.heroVertical}</span></h1>
           <a className="ln-button ln-hero-discover" href="#san-pham">{copy.heroButton} <Arrow diagonal /></a>
           <div className="ln-hero-bottom">
-            <span className="ln-hero-signature">{copy.heroSignature} <span aria-hidden="true">✳</span></span>
+            <span className="ln-hero-signature">{copy.heroSignature} <span aria-hidden="true"><DecorativeStar /></span></span>
             <p className="ln-lines">{copy.heroDescription}</p>
             <a className="ln-hero-price" href="#bang-gia">XEM BẢNG GIÁ <Arrow /></a>
           </div>
@@ -121,7 +122,7 @@ export default async function Home() {
             <div className="ln-spotlight-copy"><span className="ln-kicker">{copy.spotlightKicker}</span><h3 className="ln-lines">{copy.spotlightTitle}</h3><p className="ln-lines">{copy.spotlightDescription}</p><a className="ln-button ln-button-red" href="#bo-suu-tap">{copy.spotlightButton} <Arrow /></a></div>
             <EditorialPhoto photo={images.spotlightDetail} className="ln-spotlight-detail" sizes="(max-width: 700px) 26vw, 18vw" />
             <div className="ln-spotlight-heading"><h2 className="ln-lines" id="spotlight-title">{copy.spotlightHeading}</h2><p className="ln-lines">{copy.spotlightCaption}</p></div>
-            <span className="ln-spotlight-star" aria-hidden="true">✳</span>
+            <span className="ln-spotlight-star" aria-hidden="true"><DecorativeStar /></span>
           </div>
         </section>
 
@@ -163,7 +164,7 @@ export default async function Home() {
               <nav className="ln-footer-column" aria-label="Đồng hành cùng Long Nga"><h3>ĐỒNG HÀNH</h3><a href="#ve-chung-toi">Về Long Nga</a><a href="#lien-he">Tư vấn trang sức</a><a href="#loi-hua">Lời hứa từ Long Nga</a></nav>
               <nav className="ln-footer-column" aria-label="Kết nối với Long Nga"><h3>KẾT NỐI</h3><a href={storeInfo.facebook} target="_blank" rel="noopener noreferrer">Facebook <Arrow diagonal /></a><a href={storeInfo.zalo} target="_blank" rel="noopener noreferrer">Zalo · {storeInfo.phone} <Arrow diagonal /></a><a href={`mailto:${storeInfo.email}`}>Gửi email <Arrow diagonal /></a><a href={storeInfo.phoneHref}>Gọi cửa hàng <Arrow diagonal /></a></nav>
             </div>
-            <div className="ln-footer-wordmark" aria-hidden="true">{site.shortName}<span>✳</span></div>
+            <div className="ln-footer-wordmark" aria-hidden="true">{site.shortName}<span><DecorativeStar /></span></div>
             <div className="ln-footer-bottom" id="cuoi-trang">
               <span>© {new Date().getFullYear()} {site.name}</span>
               <address className="ln-footer-inline-contact" id="thong-tin-cua-hang">
