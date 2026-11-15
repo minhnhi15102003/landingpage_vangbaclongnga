@@ -353,10 +353,11 @@ a:hover > .ln-photo img { transform: scale(calc(var(--photo-zoom, 1) * 1.035)); 
   .ln-hero-vertical { font-size: 27px; margin-top: .5em; }
   .ln-hero-shade { background: linear-gradient(180deg, #250704a6, #25070411 58%, #250704d1); }
   .ln-hero-discover { right: var(--inset); bottom: 24%; font-size: 9px; gap: 11px; }
-  .ln-hero-bottom { bottom: 25px; gap: 16px 10px; }
-  .ln-hero-signature { font-size: 29px; }
-  .ln-hero-bottom > p { font-size: 13px; }
-  .ln-hero-price { font-size: 14px; gap: 10px; }
+  .ln-hero-bottom { bottom: 25px; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px 10px; }
+  .ln-hero-signature { grid-column: 1; grid-row: 1; font-size: 29px; }
+  .ln-hero-bottom > p { grid-column: 1 / -1; grid-row: 2; font-size: 13px; }
+  .ln-hero-bottom > p:empty { display: none; }
+  .ln-hero-price { grid-column: 2; grid-row: 1; justify-self: end; padding-bottom: 0; font-size: 14px; gap: 10px; }
   .ln-intro { grid-template-columns: 1fr; gap: 35px; padding-block: 42px 50px; }
   .ln-intro-copy h2 { font-size: 47px; }
   .ln-intro-inset { width: 45%; margin-top: -70px; margin-right: 0; }
