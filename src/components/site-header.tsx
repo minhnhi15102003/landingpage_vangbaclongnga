@@ -30,12 +30,24 @@ export default function SiteHeader({ brand }: { brand?: BrandProps }) {
       if (!dialog.open) {
         scrollLock.current = document.body.style.overflow;
         document.body.style.overflow = "hidden";
+        dialog.dataset.state = "opening";
         dialog.showModal();
+        // Paint the closed position before starting the compositor transition.
+        let enterFrame = 0;
+        const prepareFrame = window.requestAnimationFrame(() => {
+          enterFrame = window.requestAnimationFrame(() => { dialog.dataset.state = "open"; });
+        });
+        return () => {
+          window.cancelAnimationFrame(prepareFrame);
+          window.cancelAnimationFrame(enterFrame);
+        };
       }
+      dialog.dataset.state = "open";
       return;
     }
     if (!dialog.open) return;
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280;
+    dialog.dataset.state = "closed";
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 320;
     const timer = window.setTimeout(() => { dialog.close(); restoreScrolling(scrollLock); }, delay);
     return () => window.clearTimeout(timer);
   }, [open]);
@@ -77,7 +89,7 @@ export default function SiteHeader({ brand }: { brand?: BrandProps }) {
           </button>
         </div>
       </div>
-      <dialog ref={drawer} className="site-menu-drawer" id="mobile-navigation" aria-labelledby="site-menu-title" data-state={open ? "open" : "closed"}
+      <dialog ref={drawer} className="site-menu-drawer" id="mobile-navigation" aria-labelledby="site-menu-title"
         onCancel={(event) => { event.preventDefault(); setOpen(false); }} onClose={onClosed}
         onPointerDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
         <div className="site-menu-panel">
